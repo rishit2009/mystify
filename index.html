@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mystify</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: "#110805",
+                        text: "#ffffff",
+                        primary: "#fa7b0c",
+                    },
+                    fontFamily: {
+                        pixel: ['"Press Start 2P"', 'cursive'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        .pixel-corners {
+            --pixel-size: 4px;
+            clip-path: polygon(
+                0 var(--pixel-size), var(--pixel-size) var(--pixel-size), var(--pixel-size) 0,
+                calc(100% - var(--pixel-size)) 0, calc(100% - var(--pixel-size)) var(--pixel-size), 100% var(--pixel-size),
+                100% calc(100% - var(--pixel-size)), calc(100% - var(--pixel-size)) calc(100% - var(--pixel-size)), calc(100% - var(--pixel-size)) 100%,
+                var(--pixel-size) 100%, var(--pixel-size) calc(100% - var(--pixel-size)), 0 calc(100% - var(--pixel-size))
+            );
+        }
+
+        .nav-link {
+            transition: text-shadow 0.3s ease;
+        }
+
+        .nav-link:hover {
+            text-shadow: 0 0 10px #7b52ab;
+            color: #7b52ab;
+        }
+
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .menu-btn {
+            transition: all 0.3s ease;
+        }
+
+        .menu-btn:hover {
+            color: #7b52ab;
+            text-shadow: 0 0 10px #7b52ab;
+        }
+
+        .glow-border {
+            position: relative;
+        }
+
+        .glow-border::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 4px solid #fa7b0c;
+            z-index: -1;
+            animation: borderGlow 2s ease-in-out infinite;
+            box-shadow: 0 0 20px rgba(250, 123, 12, 0.3);
+        }
+
+        @keyframes borderGlow {
+            0% { box-shadow: 0 0 20px rgba(123, 82, 171, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(123, 82, 171, 0.5); }
+            100% { box-shadow: 0 0 20px rgba(123, 82, 171, 0.3); }
+        }
+
+        .cta-button {
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 0 rgba(250, 123, 12, 0.3);
+        }
+
+        .backdrop-blur {
+            backdrop-filter: blur(8px);
+        }
+
+        /* Enhanced glow effect */
+        .glow-border::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 4px solid #7b52ab;
+            z-index: -1;
+            animation: borderGlow 2s ease-in-out infinite;
+            box-shadow: 
+                0 0 20px rgba(123, 82, 171, 0.3),
+                inset 0 0 20px rgba(123, 82, 171, 0.3);
+        }
+
+        /* Enhanced button hover effect */
+        .cta-button {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(123, 82, 171, 0.1),
+                transparent
+            );
+            transform: rotate(45deg);
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover::after {
+            transform: rotate(45deg) translate(50%, 50%);
+        }
+
+        /* Mystery Pattern Background */
+        .mystery-bg {
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(123, 82, 171, 0.1) 0%, transparent 60%),
+                repeating-linear-gradient(
+                    45deg,
+                    rgba(123, 82, 171, 0.05) 0px,
+                    rgba(123, 82, 171, 0.05) 2px,
+                    transparent 2px,
+                    transparent 10px
+                );
+            background-size: 100% 100%, 20px 20px;
+        }
+
+        /* Fog Effect */
+        .fog-overlay {
+            position: absolute;
+            inset: 0;
+            background: 
+                linear-gradient(
+                    to bottom,
+                    transparent,
+                    rgba(26, 23, 32, 0.8)
+                );
+            mask-image: 
+                linear-gradient(to bottom,
+                    transparent,
+                    black 30%,
+                    black 70%,
+                    transparent
+                );
+            -webkit-mask-image: 
+                linear-gradient(to bottom,
+                    transparent,
+                    black 30%,
+                    black 70%,
+                    transparent
+                );
+        }
+
+        /* Floating Ghost Animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .ghost {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* Lightning Flash */
+        @keyframes lightning {
+            0%, 100% { opacity: 0; }
+            0.5% { opacity: 0.1; }
+            0.75% { opacity: 0; }
+            1% { opacity: 0.5; }
+            1.25% { opacity: 0; }
+            1.5% { opacity: 0.2; }
+            1.75% { opacity: 0; }
+        }
+
+        .lightning {
+            position: absolute;
+            inset: 0;
+            background: white;
+            opacity: 0;
+            animation: lightning 10s infinite;
+            animation-delay: 5s;
+        }
+    </style>
+</head>
+<body class="bg-background text-white font-pixel">
+    <!-- Navigation -->
+    <nav class="border-b-4 border-primary/30 px-8 py-6 relative">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="#" class="text-secondary text-xl">MYSTIFY</a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex gap-8">
+                <a href="#" class="nav-link text-sm">MYSTERIES</a>
+                <a href="#" class="nav-link text-sm">CLUES</a>
+                <a href="#" class="nav-link text-sm">THE GANG</a>
+                <a href="#" class="nav-link text-sm">CONTACT</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden menu-btn" onclick="toggleMenu()">
+                <ion-icon name="menu-outline"></ion-icon>
+            </button>
+
+            <!-- Mobile Menu -->
+            <div class="mobile-menu fixed top-0 right-0 h-full w-64 bg-background border-l-4 border-primary/30 p-8 md:hidden z-50">
+                <button class="menu-btn absolute top-6 right-8" onclick="toggleMenu()">
+                    <ion-icon name="close-outline"></ion-icon>
+                </button>
+                <div class="flex flex-col gap-8 mt-16">
+                    <a href="#" class="nav-link text-sm">MYSTERIES</a>
+                    <a href="#" class="nav-link text-sm">CLUES</a>
+                    <a href="#" class="nav-link text-sm">THE GANG</a>
+                    <a href="#" class="nav-link text-sm">CONTACT</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class=" relative overflow-hidden">
+        <div class="max-w-7xl mx-auto relative">
+            <!-- Main Content -->
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Left Column -->
+                <div class="space-y-8 relative">
+                    <div class="glow-border pixel-corners p-8 bg-background/80">
+                        <h1 class="text-4xl text-primary leading-relaxed mb-8">WELCOME TO THE MYSTERY MANSION</h1>
+                        <p class="text-sm leading-relaxed opacity-80 mb-8">Join our gang of mystery-solving gamers. Explore haunted levels, collect clues, and unmask the truth behind each challenge.</p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="#" class="cta-button bg-primary text-background px-8 py-4 text-sm text-center">
+                                <ion-icon name="flashlight-outline" class="inline-block mr-2"></ion-icon>
+                                START INVESTIGATING
+                            </a>
+                            <a href="#" class="cta-button border-4 border-primary text-primary px-8 py-4 text-sm text-center">
+                                <ion-icon name="map-outline" class="inline-block mr-2"></ion-icon>
+                                VIEW MYSTERIES
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column - Mansion Image -->
+                <div class="relative hidden md:block">
+                    <div class="relative flex justify-center items-center">
+                        <img 
+                            src="home-2.png" 
+                            alt="Pixel Art Haunted Mansion" 
+                            class="w-[90%] h-auto relative z-10"
+                        />
+                        <!-- Glow Effect -->
+                        <div class="absolute inset-0 bg-primary/20 blur-3xl -z-0"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function toggleMenu() {
+            const mobileMenu = document.querySelector('.mobile-menu');
+            mobileMenu.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Medieval/Gothic font -->
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+    
+    <style>
+        .form-group {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            height: 50px;
+            padding: 0 15px;
+            background: transparent;
+            border: none;
+            color: #d1b48c;  /* Aged parchment color */
+            font-family: 'MedievalSharp', cursive;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group label {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: all 0.3s ease;
+            color: #8b7355;  /* Darker parchment color */
+            pointer-events: none;
+            font-family: 'MedievalSharp', cursive;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group input:focus + label,
+        .form-group input:not(:placeholder-shown) + label {
+            top: -10px;
+            font-size: 0.875rem;
+            color: #d4af37;  /* Gold color */
+        }
+
+        .input-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('input.png');
+            background-size: 100% 100%;
+            pointer-events: none;
+            opacity: 0.9;
+        }
+
+        /* Step Indicator */
+        .step-indicator {
+            width: 40px;
+            height: 40px;
+            border: 2px solid #d4af37;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d4af37;
+            font-family: 'MedievalSharp', cursive;
+            position: relative;
+        }
+
+        .step-indicator::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border: 1px solid #d4af37;
+            border-radius: 50%;
+            opacity: 0.5;
+        }
+
+        .step-indicator.active {
+            background-color: #d4af37;
+            color: #1a0f0f;
+            box-shadow: 0 0 20px #d4af37;
+        }
+
+        /* Level Selection */
+        .level-option {
+            border: 2px solid #2a1f1f;
+            background: rgba(42, 31, 31, 0.6);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .level-option::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            transform: translateX(-100%);
+            transition: all 0.5s ease;
+        }
+
+        .level-option:hover::before {
+            transform: translateX(100%);
+        }
+
+        .level-option:hover {
+            border-color: #d4af37;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .level-option.selected {
+            border-color: #d4af37;
+            background-color: rgba(212, 175, 55, 0.1);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Gothic Button */
+        .gothic-btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .gothic-btn::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border: 1px solid #d4af37;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .gothic-btn:hover::before {
+            opacity: 1;
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
+        }
+
+        .gothic-btn:hover {
+            color: #d4af37;
+            text-shadow: 0 0 10px #d4af37;
+        }
+    </style>
+</head>
+<div class="custom-input-container">
+                <input type="text" class="custom-input" placeholder="Enter text here">
+            </div>
+<style>
+    .custom-input-container {
+    background-image: url('../static/img/assets/input.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 200px;
+    height: 40px;
+    position: relative;
+    cursor: none;
+}
+
+.custom-input {
+    position: absolute;
+    top: -1rem;
+    left: 1rem;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    color: #a69d97;
+    padding: 10px;
+    font-size: 16px;
+    outline: none;
+}
+</style>
+</body>
+</html>

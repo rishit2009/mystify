@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<style>
+    @font-face {
+  font-family: 'Gregean Brush';
+  src: url('fonts/Gregean Brush.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Hatolie';
+  src: url('fonts/Hatolie.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+    .gregean_bush{
+        font-family: 'Gregean Brush';
+    }
+    .hatolie{
+        font-family: 'Hatolie';
+    }
+    footer{
+        background-image: url('assets/gems_box.png');
+    }
+    body{
+        font-family: Hatolie;
+        color: black;
+    }
+    .level-btn {
+        transition: transform 0.3s ease;
+    }
+    .level-btn.active {
+        transform: scale(1.2);
+    }
+    .level-btn.active .chapter-title {
+        color: white;
+    }
+    #gameDialog {
+        backdrop-filter: blur(3px);
+    }
+    
+    #gameDialog button {
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+</style>
+<body class="text-black">
+
+    <main class="flex flex-col items-center relative">
+            <div id="level1" class="level-content w-screen h-screen absolute top-0 left-0" style="background-image: url('assets/lvl1_bg.png'); background-size: cover;">
+               <div class="w-3/5 max-w-3xl p-8 flex flex-col items-center text-center mt-8">
+                <h1 class="gregean_bush text-red-700 text-8xl rotate-[3.42deg]">HAUNTED HOUSE HANG UP</h1>
+                <span class="bg-yellow-200 rounded-lg flex items-center justify-center w-28 mb-4">
+                    <p class='font-bold text-lg tracking-[0.1rem]'>Aura</p>
+                    <img src="assets/gems.png" class="h-10">
+                    <p class="font-bold text-lg">1000</p>
+                </span>
+                <p class="text-2xl font-semibold mb-8">nkmnksjg igighnlu fgbbghjhbkjivubknkiuyufibnkmnksjg igighnlu fgbbghjhbkjivubknkiuyufibnkmnksjg igighnlu fgbbghjhbkjivubknkiuyufibnkmnksjg igighnlu fgbbghjhbkjivubknkiuyufibnkmnksjg igighnlu fgbbghjhbkjivubknkiuyufibnkmnksjg igighnlu fgbbghjhbkjivubknkiuyufib</p>
+                <button onclick="openGameDialog('gameDialog1')" class="bg-gray-800 bg-opacity-50 hover:bg-opacity-70 text-white px-12 py-3 rounded-lg transition-all duration-300 text-3xl">
+                    Play
+                </button>
+               </div>
+            </div>
+            <div id="level2" class="level-content hidden w-screen h-screen absolute top-0 left-0" style="background-image: url('assets/lvl2_bg.png'); background-size: cover;">
+               <div class="w-3/5 max-w-3xl p-8 flex flex-col items-center text-center mt-20">
+                <h1 class="gregean_bush text-red-700 text-8xl rotate-[-1.9deg]">COMING SOON!</h1>
+                <span class="bg-yellow-200 rounded-lg flex items-center justify-center w-28 mb-4">
+                    <p class='font-bold text-lg tracking-[0.1rem]'>Aura</p>
+                    <img src="assets/gems.png" class="h-10">
+                    <p class="font-bold text-lg">1000</p>
+                </span>
+                <p class="text-2xl font-semibold mb-8">Something has happened in crystal cave again!
+                    Mayor Jones is under attack by a poltergeist in his own home, and the only ones who can help him are Scooby and the gang.unfortunately, the gang isn’t available. 
+                   could you help mayor jones before its too late?.</p>
+
+               </div>
+            </div>
+            <div id="level3" class="level-content hidden w-screen h-screen absolute top-0 left-0" style="background-image: url('assets/lvl3_bg.png'); background-size: cover;">
+               <div class="w-3/5 max-w-3xl p-8 flex flex-col items-center text-center mt-20">
+                <h1 class="gregean_bush text-red-700 text-8xl tracking-[0.1rem] rotate-[-1.9deg]">COMING SOON!</h1>
+                <span class="bg-yellow-200 rounded-lg flex items-center justify-center w-28 mb-4">
+                    <p class='font-bold text-lg'>Aura</p>
+                    <img src="assets/gems.png" class="h-10">
+                    <p class="font-bold text-lg">1000</p>
+                </span>
+                <p class="text-2xl font-semibold mb-8">The gang investigate an old abandoned amusement park, when it suddenly jumps into life, and the mysterious robot that seems to have taken it over. Could you help scooby doo and the gang to fight against the tank of robots? are you willing to risk for what is at stake?
+                </p>
+
+               </div>
+            </div>
+    </main>
+
+    <div class="fixed bottom-1/2 left-2 translate-y-1/2 lg:-translate-y-0 lg:bottom-2 lg:left-1/2 transform lg:-translate-x-1/2 flex justify-between gap-20 z-10 flex-col lg:flex-row">
+        <button onclick="showLevel('level1')" class="relative flex flex-col level-btn w-64 h-64 items-center justify-center" data-level="level1">
+            <img src="assets/lvl1_inactive.png" alt="Level 1" class="inactive-img w-full h-full object-contain">
+            <img src="assets/lvl1_active.png" alt="Level 1" class="active-img hidden w-full h-full object-contain">
+            <h2 class="tracking-[0.25rem] absolute bottom-4 text-2xl font-bold text-gray-400 chapter-title">CHAPTER 1</h2>
+        </button>
+        <button onclick="showLevel('level2')" class="relative level-btn w-64 h-64 flex items-center justify-center" data-level="level2">
+            <img src="assets/locked_inactive.png" alt="Level 2" class="inactive-img w-full h-full object-contain">
+            <img src="assets/locked_active.png" alt="Level 2" class="active-img hidden w-full h-full object-contain">
+            <h2 class="tracking-[0.25rem] absolute bottom-4 text-2xl font-bold text-gray-400 chapter-title">CHAPTER 2</h2>
+        </button>
+        <button onclick="showLevel('level3')" class="relative level-btn w-64 h-64 flex items-center justify-center" data-level="level3">
+            <img src="assets/locked_inactive.png" alt="Level 3" class="inactive-img w-full h-full object-contain">
+            <img src="assets/locked_active.png" alt="Level 3" class="active-img hidden w-full h-full object-contain">
+            <h2 class="tracking-[0.25rem] absolute bottom-4 text-2xl font-bold text-gray-400 chapter-title">CHAPTER 3</h2>
+        </button>
+    </div>
+
+    <footer class="absolute bottom-4 left-4 bg-no-repeat bg-contain" style="background-image: url('assets/gems_box.png'); width: 150px; height: 50px; background-size: 100% 100%;">
+        <div class="flex items-center justify-center h-full mt-2">
+            <p class="font-semibold text-white">Aura</p>
+            <img src="assets/gems.png" class="w-6 h-6 mr-2">
+            <span class="text-xl text-white hatolie">50</span>
+        </div>
+    </footer>
+
+    <div id="gameDialog1" style="background-image: url('assets/dialog_bg.png'); box-shadow: 0 0 0 100vmax rgba(0,0,0,0.5);" class="hidden max-w-2xl m-auto bg-no-repeat bg-center bg-contain fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="p-12 relative w-full flex flex-col items-center justify-center">
+            <h2 class="text-5xl mb-8 hotalie font-bold">Mode</h2>
+            <div class="flex flex-col gap-4">
+                <button onclick="startGame('single', 1)" class="text-3xl font-semibold hover:bg-yellow-700 px-8 py-2 rounded hotalie transition-colors duration-300">
+                    Single Player
+                </button>
+                <div class="h-1 w-full bg-black"></div>
+                <button onclick="startGame('multi', 1)" class="text-3xl font-semibold hover:bg-yellow-700 px-8 py-3 rounded hotalie transition-colors duration-300">
+                    Multiplayer
+                </button>
+            </div>
+    
+            <button onclick="closeGameDialog('gameDialog1')" class="text-2xl mt-4 bg-[#bc6e24] hover:bg-[#89501a] px-6 py-2 rounded transition-colors duration-300">
+                Close
+            </button>
+        </div>
+    </div>
+
+
+
+    <script>
+        function showLevel(levelId) {
+            document.querySelectorAll('.level-content').forEach(level => {
+                level.classList.add('hidden');
+            });
+            document.getElementById(levelId).classList.remove('hidden');
+
+            document.querySelectorAll('.level-btn').forEach(btn => {
+                const isActive = btn.dataset.level === levelId;
+                btn.querySelector('.active-img').classList.toggle('hidden', !isActive);
+                btn.querySelector('.inactive-img').classList.toggle('hidden', isActive);
+                btn.classList.toggle('active', isActive);
+            });
+        }
+        showLevel('level1');
+
+        function openGameDialog(dialogId) {
+            console.log('Opening dialog:', dialogId);
+            document.getElementById(dialogId).classList.remove('hidden');
+        }
+
+        function closeGameDialog(dialogId) {
+            console.log('Closing dialog:', dialogId);
+            document.getElementById(dialogId).classList.add('hidden');
+        }
+
+        function startGame(mode, level) {
+            console.log(`Starting level ${level} in ${mode} mode`);
+            closeGameDialog(`gameDialog${level}`);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            ['gameDialog1', 'gameDialog2', 'gameDialog3'].forEach(dialogId => {
+                document.getElementById(dialogId).addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        closeGameDialog(dialogId);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+       @font-face {
+  font-family: 'Gregean Brush';
+  src: url('fonts/Gregean Brush.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Hatolie';
+  src: url('fonts/Hatolie.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+  html{
+    height: 100%;
+    width: 100%;
+  }
+    .gregean_bush{
+        font-family: 'Gregean Brush';
+    }
+    .hatolie{
+        font-family: 'Hatolie';
+    }
+    footer{
+        background-image: url('assets/gems_box.png');
+    }
+    body{
+        font-family: Hatolie;
+        color: black;
+    }
+    body {
+      background-color: #4B2F07;
+    }
+    .btn:hover{
+      background-color:  rgba(75, 47, 7, 0.8);
+    }
+    .team{
+      background-color: rgba(75, 47, 7, 0.5);
+    }
+    footer{
+        background-image: url('assets/gems_box.png');
+    }
+  </style>
+</head>
+<body class="h-full w-full px-8">
+  
+  <main class="relative grid place-items-center bg-[url('assets/scroll.png')] bg-cover bg-top bg-no-repeat mx-auto"> 
+    <div class="flex absolute top-16 w-full justify-around">
+      <button class="btn text-center text-white text-xl px-4 py-2 font-bold tracking-[0.25] transition-colors" style="background-color: rgba(75, 47, 7, 0.5);">Enter code</button>
+      <button href="create.html" class="btn text-center text-white text-xl px-4 py-2 font-bold tracking-[0.25]" style="background-color: rgba(75, 47, 7, 0.5);">Back</button>
+    </div>
+    <div class="mt-40 flex flex-col items-center">
+        <h1 class="text-[96px] text-[#4B2F07]">Create Team</h1>
+      <div class="max-w-2xl text-2xl mx-auto p-4">
+        <form action="" class="flex flex-col items-end justify-center gap-8">
+            <div class="flex gap-4">
+                <label for="" class="text-3xl font-semibold text-white">Team Name :</label>
+                <input type="text" class="rounded-full px-4 py-2" style="background-color:  rgba(75, 47, 7, 0.5);">
+            </div>
+            <div class="flex gap-4">
+                <label for="" class="text-3xl font-semibold text-white">Generate Code :</label>
+                <input type="text" class="rounded-full px-4 py-2" style="background-color:  rgba(75, 47, 7, 0.5);">
+            </div>
+            <div class="flex gap-4">
+                <label for="" class="text-3xl font-semibold text-white">Enter No. of players :</label>
+                <input type="text" class="rounded-full px-4 py-2" style="background-color:  rgba(75, 47, 7, 0.5);">
+            </div>
+            <button class="mt-8 px-16 py-8 text-center rounded-lg mx-auto font-bold text-white text-4xl tracking-[0.125rem]" style="background-color:  rgba(75, 47, 7, 0.5);">Create</button>
+        </form>
+
+            
+        </div>
+    </div>
+    </div>
+  </main>
+
+  <footer class="absolute bottom-4 left-4 bg-no-repeat bg-contain" style="background-image: url('assets/gems_box.png'); width: 150px; height: 50px; background-size: 100% 100%;">
+    <div class="flex items-center justify-center h-full mt-2">
+        <p class="font-semibold text-white">Aura</p>
+        <img src="assets/gems.png" class="w-6 h-6 mr-2">
+        <span class="text-xl text-white hatolie">50</span>
+    </div>
+</footer>
+</body>
+</html>
